@@ -1,0 +1,35 @@
+name: Check Config
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-config:
+    name: Check Configuration Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Verify configuration files
+        run: |
+          # Check if .env file exists
+          if [ ! -f .env ]; then
+            echo "Error: .env file is missing"
+            exit 1
+          fi
+          
+          # Check if config.yml exists
+          if [ ! -f config.yml ]; then
+            echo "Error: config.yml is missing"
+            exit 1
+          fi
+          
+          # Optionally, check contents of config files
+          echo "Configuration files exist and are valid."

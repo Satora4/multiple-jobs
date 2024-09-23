@@ -1,0 +1,119 @@
+name: Multiple Jobs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Lint YAML files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install yamllint
+        run: |
+          python -m pip install --upgrade pip
+          pip install yamllint
+
+      - name: Run yamllint
+        run: |
+          yamllint .
+
+  
+
+  test:
+    name: Run Node.js Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+
+
+  check-config:
+    name: Check Configuration Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Verify configuration files
+        run: |
+          # Check if .env file exists
+          if [ ! -f .env ]; then
+            echo "Error: .env file is missing"
+            exit 1
+          fi
+
+          # Check if config.yml exists
+          if [ ! -f config.yml ]; then
+            echo "Error: config.yml is missing"
+            exit 1
+          fi
+
+          # Optionally, check contents of config files
+          echo "Configuration files exist and are valid."
+  
+
+  update-docs:
+    name: Update Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python (for generating docs, if needed)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install documentation tools (optional)
+        run: |
+          pip install mkdocs  # Example for MkDocs
+          pip install mkdocs-material
+
+      - name: Generate Documentation
+        run: |
+          # This is an example for generating static docs with mkdocs
+          if [ -f mkdocs.yml ]; then
+            mkdocs build
+          else
+            echo "No mkdocs.yml found, skipping documentation generation"
+          fi
+
+      - name: Check for Markdown files
+        run: |
+          # Ensure README.md exists
+          if [ ! -f README.md ]; then
+            echo "Error: README.md file is missing"
+            exit 1
+          fi
+
+          # You can extend this check for other documentation files
+          echo "Documentation files are valid."

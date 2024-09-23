@@ -80,6 +80,7 @@ jobs:
       - name: Install documentation tools (optional)
         run: |
           echo "Installing tools for documentation generation (e.g., MkDocs)."
+          exit 1
 
   build-deployment:
     name: Build Deployment Artifact

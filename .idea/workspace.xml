@@ -80,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1727084256490</updated>
-      <workItem from="1727084257664" duration="3470000" />
+      <workItem from="1727084257664" duration="3928000" />
     </task>
     <task id="LOCAL-00001" summary="more checks">
       <option name="closed" value="true" />
@@ -138,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727087609454</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added deploy to server">
+      <option name="closed" value="true" />
+      <created>1727087982751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727087982751</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +160,7 @@
     <MESSAGE value="added setup job" />
     <MESSAGE value="added needs to jobs" />
     <MESSAGE value="added description to echo" />
-    <option name="LAST_COMMIT_MESSAGE" value="added description to echo" />
+    <MESSAGE value="added deploy to server" />
+    <option name="LAST_COMMIT_MESSAGE" value="added deploy to server" />
   </component>
 </project>

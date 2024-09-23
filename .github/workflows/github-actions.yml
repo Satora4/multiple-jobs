@@ -9,6 +9,19 @@ on:
       - main
 
 jobs:
+  setup:
+    name: Setup Environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Install common dependencies
+        run: |
+          echo "1"
+          
+
   lint:
     name: Lint YAML files
     runs-on: ubuntu-latest
@@ -19,11 +32,11 @@ jobs:
 
       - name: Install yamllint
         run: |
-          echo "1"
+          echo "2"
 
       - name: Run yamllint
         run: |
-          echo "2"
+          echo "3"
 
   
 
@@ -37,11 +50,11 @@ jobs:
 
       - name: Install dependencies
         run: | 
-          echo "3"
+          echo "4"
 
       - name: Run tests
         run: |
-          echo "4"
+          echo "5"
 
 
 
@@ -55,7 +68,7 @@ jobs:
 
       - name: Verify configuration files
         run: |
-          echo "5"
+          echo "6"
   
 
   update-docs:
@@ -68,4 +81,4 @@ jobs:
 
       - name: Install documentation tools (optional)
         run: |
-          echo "6"
+          echo "7"
